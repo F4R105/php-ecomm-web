@@ -1,0 +1,51 @@
+section#orders_page {
+
+    .container {
+        display: flex;
+        gap: 2em;
+    }
+
+    #orders {
+        flex: 1;
+        // outline: 2px solid red;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        .product {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            outline: 2px solid grey;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .product_image {
+            width: 100px;
+            aspect-ratio: 1/1;
+        }
+    }
+
+    #calculator {
+        flex: 1;
+    }
+
+    button {
+        background-color: var(--primary-color);
+        padding: 0.5em 1em;
+        margin-top: 3em;
+        font-size: 1.2rem;
+        width: fit-content;
+        border-radius: 5px;
+        display: flex;
+        gap: 1em;
+        color: white;
+
+        &:hover { 
+            background-color: rgba(0,0,0,0.05); 
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+    }
+}

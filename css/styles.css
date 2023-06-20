@@ -1,0 +1,409 @@
+:root {
+  --primary-color: #47452d;
+  --secondary-color: white;
+  --bg-color: #f2ffe4;
+  --danger: rgb(190, 51, 51);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+body section {
+  min-height: 100vh;
+  padding-top: 180px;
+}
+body a, body li {
+  text-decoration: none;
+  list-style: none;
+  color: black;
+}
+body a, body button {
+  transition: background-color 0.2s ease;
+  transition: border-color 0.2s ease;
+  transition: color 0.2s ease;
+}
+body button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+body .container {
+  width: 100vw;
+  height: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+nav #topNav {
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+nav #topNav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav #topNav #logo {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.7rem;
+  color: rgb(59, 59, 59);
+}
+nav #topNav #search {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.25em 1em;
+  background-color: white;
+  border-radius: 200px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+nav #topNav #search input {
+  flex: 1;
+  font-size: 1.2rem;
+  padding: 0.2em;
+  border: none;
+  background-color: transparent;
+}
+nav #topNav #search input:focus {
+  outline: none;
+}
+
+nav #bottomNav {
+  background-color: var(--primary-color);
+}
+nav #bottomNav .container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: relative;
+}
+nav #bottomNav #navLinks {
+  display: flex;
+}
+nav #bottomNav #navLinks a {
+  display: inline-block;
+  color: white;
+  padding: 15px 15px;
+}
+nav #bottomNav #navLinks a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+nav #bottomNav #searchResults {
+  display: none;
+}
+nav #bottomNav #searchResults.searching {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30vw;
+  max-width: 400px;
+  min-height: 200px;
+  max-height: 350px;
+  overflow-y: scroll;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 3px 5px 5px 5px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: height 0.2s ease-in-out;
+}
+nav #bottomNav #searchResults #preloader {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+}
+nav #bottomNav #searchResults .product {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.3em;
+  border-radius: 5px;
+}
+nav #bottomNav #searchResults .product:hover {
+  cursor: pointer;
+  background-color: white;
+}
+nav #bottomNav #searchResults .image {
+  width: 80px;
+  aspect-ratio: 1/1;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: rgb(45, 71, 57);
+}
+nav #bottomNav #searchResults .name {
+  font-weight: bold;
+}
+
+main {
+  min-height: 100vh;
+  margin-top: 130px;
+}
+main #hero {
+  margin-top: 1em;
+  padding: 1em;
+  width: 100%;
+  height: 200px;
+  background-color: rgb(45, 71, 57);
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  background-image: url("../assets/hero.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+main #hero h1 {
+  text-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+main #categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 1em;
+}
+main #categories .category {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1em;
+  flex: 1 0;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 200px;
+  cursor: pointer;
+}
+main #categories .category:hover {
+  background-color: grey;
+}
+main #products {
+  margin-top: 1em;
+  margin-bottom: 5em;
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+main #products .product {
+  border-radius: 8px;
+  padding: 0.5em;
+  box-shadow: 0 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+main #products .image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  overflow: hidden;
+}
+main #products .name {
+  padding: 0.3em;
+}
+main #products .price {
+  padding: 0.2em;
+  font-weight: bold;
+}
+
+section#cart_page .container {
+  display: flex;
+  gap: 2em;
+}
+section#cart_page #cartItems {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+section#cart_page #cartItems .product {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  outline: 2px solid grey;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  max-width: 500px;
+}
+section#cart_page #cartItems .product_image {
+  width: 100px;
+  aspect-ratio: 1/1;
+}
+section#cart_page #cartItems button.remove_cartItem {
+  padding: 5px;
+  border-radius: 0 0 0 5px;
+  background-color: var(--danger);
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+section#cart_page #calculator {
+  flex: 1;
+}
+section#cart_page button#oo {
+  background-color: var(--primary-color);
+  padding: 0.5em 1em;
+  margin-top: 3em;
+  font-size: 1.2rem;
+  width: fit-content;
+  border-radius: 5px;
+  display: flex;
+  gap: 1em;
+  color: white;
+}
+section#cart_page button#oo:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+section#orders_page .container {
+  display: flex;
+  gap: 2em;
+}
+section#orders_page #orders {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+section#orders_page #orders .product {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  outline: 2px solid grey;
+  border-radius: 5px;
+  overflow: hidden;
+}
+section#orders_page #orders .product_image {
+  width: 100px;
+  aspect-ratio: 1/1;
+}
+section#orders_page #calculator {
+  flex: 1;
+}
+section#orders_page button {
+  background-color: var(--primary-color);
+  padding: 0.5em 1em;
+  margin-top: 3em;
+  font-size: 1.2rem;
+  width: fit-content;
+  border-radius: 5px;
+  display: flex;
+  gap: 1em;
+  color: white;
+}
+section#orders_page button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+section#product_page .container {
+  display: flex;
+  gap: 2em;
+}
+section#product_page #product {
+  flex: 1;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 5px;
+}
+section#product_page #details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+section#product_page #details .name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+section#product_page #details .price {
+  font-size: 1.5rem;
+}
+section#product_page #details .category {
+  border-radius: 100px;
+  padding: 10px 15px;
+  border: 1px solid var(--primary-color);
+  width: fit-content;
+}
+section#product_page #details button {
+  background-color: var(--primary-color);
+  padding: 0.5em 1em;
+  margin-top: 3em;
+  font-size: 1.2rem;
+  width: fit-content;
+  border-radius: 5px;
+  display: flex;
+  gap: 1em;
+  color: white;
+}
+section#product_page #details button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+footer {
+  background-color: rgb(34, 34, 34);
+  color: rgb(66, 66, 34);
+}
+footer > div:nth-child(2) {
+  text-align: center;
+  padding: 1em;
+  background-color: rgb(2, 2, 2);
+  width: 100%;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+footer .container h3 {
+  padding: 1em 0;
+  color: grey;
+}
+footer .container p, footer .container li {
+  color: grey;
+}
+footer .container #aboutus {
+  max-width: 500px;
+}
